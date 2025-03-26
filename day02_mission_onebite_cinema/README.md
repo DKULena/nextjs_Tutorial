@@ -1,0 +1,1 @@
+![alt text](day2_mission.png)
