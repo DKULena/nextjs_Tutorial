@@ -113,3 +113,7 @@ page폴더 내부에 `404.tsx` 로 지정
 ![alt text](image-2.png)
 ### 프리패치 해제
 - `<Link prefetc{false}>` 
+
+## API Routes
+- Next.js에서 API를 구축할 수 있게 해주는 기능
+- 백엔드 API 서버가 하는 일과 동일하게 간단한 API를 구축, 브라우저로부터 요청을 받아 DB에서 데이터를 꺼내오기 || third-party 데이터를 불러와 전달 하는 기능을 대신 함
