@@ -11,10 +11,13 @@
 
    (이때의 검색어는 쿼리스트링 q로 전달됩니다)  
 
+### 0. Anchor
+![alt text](image-3.png)
+
 ### 1. index page
 ![alt text](image.png)
 
-### 2. index page
+### 2. search page
 ![alt text](image-1.png)
 
 ### 3. movie page
