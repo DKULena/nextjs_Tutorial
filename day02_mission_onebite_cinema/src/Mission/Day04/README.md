@@ -21,4 +21,4 @@
 ![alt text](image-1.png)
 
 ### 3. movie page
-![alt text](image-2.png)
+![movie page](image-2.png)
