@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie_recommended {
+  display: flex;
+  gap: 5px;
+}
+
+.movie_all {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 100%;
+}
+
+.movie_all > a {
+  width: calc(20% - 4px);
+}
+
+.movie_all img {
+  width: 100%;
+}

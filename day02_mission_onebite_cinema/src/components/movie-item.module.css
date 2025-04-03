@@ -1,0 +1,8 @@
+.movie_recommended_item {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie_recommended_item img {
+  width: 100%;
+}
