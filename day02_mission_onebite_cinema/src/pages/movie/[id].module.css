@@ -1,0 +1,50 @@
+.cover_img_container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 10px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.cover_img_container::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    content: "";
+
+}
+
+.cover_img_container > img {
+    z-index: 1;
+    max-width: 250px;
+    height: 100%;
+}
+
+.movie_about {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.movie_about > h2 {
+margin: 0;}
+
+.title {
+    font-size: large;
+    font-weight: bold;
+}
+.summary {
+
+}
+.subTitle {
+    margin-bottom: 10px;
+}
+.movie_description {
+    font-size: 14px;
+}

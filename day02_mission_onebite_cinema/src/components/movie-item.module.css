@@ -1,8 +1,28 @@
 .movie_recommended_item {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .movie_recommended_item img {
   width: 100%;
+  object-fit: cover;
+}
+
+.movie_search_item img {
+  width: calc(33.33% - 10px);
+  margin: 5px;
+}
+
+.movie_all_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie_all_item img {
+  margin: 5px;
+  object-fit: cover;
 }
