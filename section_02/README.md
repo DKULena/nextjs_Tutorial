@@ -117,3 +117,12 @@ page폴더 내부에 `404.tsx` 로 지정
 ## API Routes
 - Next.js에서 API를 구축할 수 있게 해주는 기능
 - 백엔드 API 서버가 하는 일과 동일하게 간단한 API를 구축, 브라우저로부터 요청을 받아 DB에서 데이터를 꺼내오기 || third-party 데이터를 불러와 전달 하는 기능을 대신 함
+
+
+## 서버 사이드 렌더링 (SSR - Server Side Rendering)
+- 가장 기본적인 사전 렌더링 방식
+- 요청이 들어올 때 마다 사전 렌더링을 진행 함
+![alt text](image-3.png)
+
+- getServerSideProps
+    - 컴포넌트 보다 먼저 실행되어서, 컴포넌트에 필요한 데이터를 불러오는 함수
