@@ -1,4 +1,6 @@
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import style from "./[id].module.css";
+import fetchOneBook from "@/lib/fetch-one-book";
 const mockData = {
   id: 1,
   title: "한 입 크기로 잘라 먹는 리액트",
@@ -11,18 +13,35 @@ const mockData = {
     "https://shopping-phinf.pstatic.net/main_3888828/38888282618.20230913071643.jpg",
 };
 
-export default function Page() {
-  const { title, subTitle, description, author, publisher, coverImgUrl } =
-    mockData;
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const id = context.params!.id;
+  const book = await fetchOneBook(Number(id));
+  return {
+    props: { book },
+  };
+};
+
+export default function Page({book}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  
+  if(!book) return "문제가 발생했습니다 다시 시도하세요"
+
+  const { title, subTitle, description, author, publisher, coverImgUrl } = book;
   return (
     <div className={style.container}>
-      <div className={style.cover_img_container} style={{ backgroundImage: `url("${coverImgUrl}")` }}>
+      <div
+        className={style.cover_img_container}
+        style={{ backgroundImage: `url("${coverImgUrl}")` }}
+      >
         <img src={coverImgUrl} />
-          </div>
-          <div className={style.title}>{title}</div>
-          <div className={style.subTitle}>{subTitle}</div>
-          <div className={style.author}>{author} | {publisher}</div>
-          <div className={style.description}>{description}</div>
+      </div>
+      <div className={style.title}>{title}</div>
+      <div className={style.subTitle}>{subTitle}</div>
+      <div className={style.author}>
+        {author} | {publisher}
+      </div>
+      <div className={style.description}>{description}</div>
     </div>
   );
 }
