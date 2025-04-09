@@ -2,11 +2,25 @@ import styles from "./index.module.css";
 import SearchableLayout from "@/components/searchable-layout";
 import { ReactNode } from "react";
 import MovieItem from "@/components/movie-item";
-import { InferGetServerSidePropsType } from "next";
+import {
+  // InferGetServerSidePropsType,
+  InferGetStaticPropsType
+} from "next";
 import fetchMovies from "@/lib/fetch-movies";
 import fetchRandomMovies from "@/lib/fetch-random-movies";
 
-export const getServerSideProps = async () => {
+// export const getServerSideProps = async () => {
+//   const [allMovies, recoMovies] = await Promise.all([
+//     fetchMovies(),
+//     fetchRandomMovies(),
+//   ]);
+//   return {
+//     props: { allMovies, recoMovies },
+//   };
+// };
+
+export const getStaticProps = async () => {
+  console.log("index page")
   const [allMovies, recoMovies] = await Promise.all([
     fetchMovies(),
     fetchRandomMovies(),
@@ -19,7 +33,7 @@ export const getServerSideProps = async () => {
 export default function Home({
   allMovies,
   recoMovies,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className={styles.container}>
       <section className={styles.container__recommended}>
