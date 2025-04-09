@@ -1,23 +1,36 @@
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import {
+  GetStaticPropsContext,
+  // GetServerSidePropsContext, InferGetServerSidePropsType,
+  InferGetStaticPropsType,
+} from "next";
 import style from "./[id].module.css";
 import fetchOneMovie from "@/lib/fetchOneMovie";
 
+export const getStaticPaths = () => {
+  return {
+    paths: [
+      { params: { id: "1" } },
+      { params: { id: "2" } },
+      { params: { id: "3" } },
+    ],
+    fallback: false,
+  };
+};
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
+export const getStaticProps = async (context: GetStaticPropsContext) => {
   const id = context.params!.id;
-  const movie = await fetchOneMovie(Number(id))
+  const movie = await fetchOneMovie(Number(id));
 
   return {
-    props: {movie},
+    props: { movie },
   };
 };
 
 export default function Page(
-  { movie }: InferGetServerSidePropsType<typeof getServerSideProps>
+  // { movie }: InferGetServerSidePropsType<typeof getServerSideProps>
+  { movie }: InferGetStaticPropsType<typeof getStaticProps>
 ) {
-  if(!movie) return "문제가 발생했습니다 다시 시도하세요"
+  if (!movie) return "문제가 발생했습니다 다시 시도하세요";
   const {
     id,
     title,
