@@ -6,7 +6,6 @@ import {
 import style from "./[id].module.css";
 import fetchOneMovie from "@/lib/fetchOneMovie";
 import { useRouter } from "next/router";
-import { notFound } from "next/navigation";
 
 export const getStaticPaths = () => {
   return {
@@ -15,7 +14,7 @@ export const getStaticPaths = () => {
       { params: { id: "2" } },
       { params: { id: "3" } },
     ],
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
@@ -23,7 +22,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   const id = context.params!.id;
   const movie = await fetchOneMovie(Number(id));
 
-  if (!book) {
+  if (!movie) {
     return {
       notFound: true,
     };
