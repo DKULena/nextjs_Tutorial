@@ -7,7 +7,7 @@ import fetchBooks from "@/lib/fetch-book";
 import fetchRandomBooks from "@/lib/fetch-random-books";
 
 export const getStaticProps = async () => {
-  console.log("index page")
+  console.log("index page");
   const [allBooks, recoBooks] = await Promise.all([
     fetchBooks(),
     fetchRandomBooks(),
