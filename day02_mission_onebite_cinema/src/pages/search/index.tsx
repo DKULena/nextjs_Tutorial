@@ -1,30 +1,16 @@
 import SearchableLayout from "@/components/searchable-layout";
-// import { useRouter } from "next/router";
 import { ReactNode, useEffect, useState } from "react";
 import MovieItem from "@/components/movie-item";
 import {
-  // GetServerSidePropsContext,
-  // GetStaticPropsContext,
-  // InferGetServerSidePropsType,
 } from "next";
 import fetchMovies from "@/lib/fetch-movies";
 import { useRouter } from "next/router";
 import { MovieData } from "@/types";
+import Head from "next/head";
 
-// export const getServerSideProps = async (
-//   context: GetServerSidePropsContext
-// ) => {
-//   const q = context.query.q;
-//   const movies = await fetchMovies(q as string);
-//   return {
-//     props: { movies },
-//   };
-// };
+
 
 export default function Page() {
-// {
-// movies,
-// }: InferGetServerSidePropsType<typeof getServerSideProps>
   const [movies, setMovies] = useState<MovieData[]>([]);
 
   const router = useRouter();
@@ -43,6 +29,15 @@ export default function Page() {
 
   return (
     <div>
+      <Head>
+      <title>한입 씨네마 - 검색 결과</title>
+        <meta property="og:image" content="/thumbnail.png" />
+        <meta property="og:title" content="한입 씨네마 - 검색 결과" />
+        <meta
+          property="og:description"
+          content="한입 씨네마에 등록된 영화들을 만나보세요"
+        />
+      </Head>
       {movies.map((movie) => (
         <MovieItem className="movie_search_item" key={movie.id} {...movie} />
       ))}
